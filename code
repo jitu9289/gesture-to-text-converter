@@ -1,0 +1,166 @@
+#include <LiquidCrystal.h>
+//const int rs = 12, en = 11, d3 = 4, d4 = 3, d5 = 3, d6 = 2;
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+ 
+void setup() {
+  lcd.begin(16, 2);
+  lcd.clear();
+  Serial.begin(9500);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
+  pinMode(6, INPUT);
+  pinMode(2, OUTPUT);
+  lcd.setCursor(0, 1);
+  lcd.clear();
+}
+ 
+void loop() {
+ 
+ 
+  if (digitalRead(3) == LOW) {
+    if (digitalRead(4) == LOW) {
+      if (digitalRead(5) == LOW) {
+        if (digitalRead(6) == LOW) {//0000
+          lcd.clear();
+          lcd.print("      J.A.G.");
+          lcd.setCursor(0, 2);
+          lcd.print("     M.A.I.T.");
+          delay(100);
+        }
+        else
+        { lcd.clear();
+          lcd.print("Hello");//0001
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+        }
+      }
+      else if (digitalRead(6) == LOW) {
+        lcd.clear();
+        lcd.print("Water");//0010
+        digitalWrite(2, HIGH);
+        delay(100);
+        digitalWrite(2, LOW);
+      }
+ 
+      else {
+        lcd.clear();
+        lcd.print("Help");//0011
+        digitalWrite(2, HIGH);
+        delay(100);
+        digitalWrite(2, LOW);
+      }
+    } else {
+      if (digitalRead(5) == LOW) {
+        if (digitalRead(6) == LOW) {
+          lcd.clear();
+          lcd.print("Food");//0100
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+ 
+        }
+        else {
+          lcd.clear();
+          lcd.print("Morning");//0101
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+        }
+      }
+      else     {
+        if (digitalRead(6) == LOW) {
+          lcd.clear();
+          digitalWrite(2, HIGH);//0110
+          lcd.print("Evening");
+          digitalWrite(2, LOW);
+        }
+        else {
+          lcd.clear();
+          lcd.print("Bye");//0111
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+        }
+      }
+    }
+  } else {
+    if (digitalRead(4) == LOW) {
+      if (digitalRead(5) == LOW) {
+        if (digitalRead(6) == LOW) {
+          lcd.clear();
+          lcd.print("Time");//1000
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+ 
+        }
+        else {
+          lcd.clear();
+          lcd.print("Good");//1001
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+        }
+      }
+      else {
+        if (digitalRead(6) == LOW) {
+          lcd.clear();
+          lcd.print("7065141890");//1010
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+ 
+        }
+        else {
+          lcd.clear();
+          lcd.print("Home");//1011
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+        }
+      }
+ 
+    } else {
+      if (digitalRead(5) == LOW) {
+        if (digitalRead(6) == LOW) {
+          lcd.clear();
+          lcd.print("Full address ");//1100
+          lcd.setCursor(0, 2);
+          lcd.print("comes here");
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+ 
+ 
+        }
+        else {
+          lcd.clear();
+          lcd.print("Yes");//1101
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+        }
+ 
+ 
+      } else {
+        if (digitalRead(6) == LOW) {
+          lcd.clear();
+          lcd.print("No");//1101
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+ 
+        }
+        else {
+          lcd.clear();
+          lcd.print("Thank You");//1110
+          digitalWrite(2, HIGH);
+          delay(100);
+          digitalWrite(2, LOW);
+        }
+      }
+    }
+  }
+}
